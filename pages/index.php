@@ -12,6 +12,7 @@ if (!$_GET['page']) {
     <?php include_once "../components/navbar.php"; ?>
     <main>
 
+
         <h1>Covid19 Data Tracker</h1>
         <?php include_once "../components/searchbar.php"; ?>
 
