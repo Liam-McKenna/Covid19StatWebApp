@@ -1,0 +1,131 @@
+@import url("focusCountry.css");
+@import url("allCountries.css");
+
+:root {
+  --TransitionV: 1020ms ease;
+  --ClightG: #3c4042;
+  --CBG: #202124;
+  --Cpink: #ea80fc;
+  --Cdarkgrey: #121212;
+}
+
+body {
+  background: var(--CBG);
+  font-family: "Roboto";
+  text-align: center;
+}
+
+h1,
+h3 {
+  color: var(--Cpink);
+}
+h2 {
+  color: white;
+}
+
+p {
+  color: white;
+  font-size: 1rem;
+}
+
+.access-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signupComponent {
+  margin: 3rem;
+}
+
+.signupComponent form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.signupComponent input {
+  margin: 1rem;
+  width: 20rem;
+}
+
+.loginComponent {
+  margin: 3rem;
+}
+
+.loginComponent form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.loginComponent input {
+  margin: 1rem;
+  width: 20rem;
+}
+
+input {
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: var(--Cdarkgrey);
+}
+input:focus {
+  outline: none;
+  outline-offset: -4px;
+  color: var(--Cpink);
+}
+
+.row {
+  color: lightgrey;
+  background-color: var(--ClightG);
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 25px;
+  transition: 150ms ease;
+}
+.row:hover {
+  transform: scale(1.04);
+}
+
+button {
+  font-weight: bold;
+  background-color: var(--Cdarkgrey);
+  color: var(--Cpink);
+  border: none;
+  padding: 1rem 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--TransitionV);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+button:hover,
+button:focus {
+  background: var(--Cpink);
+  color: var(--Cdarkgrey);
+}
+button:focus {
+  outline: none;
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
+.page-numbers {
+  margin: 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+.pageback {
+  border-radius: 30px 0px 0px 30px;
+}
+.pageforward {
+  border-radius: 0px 30px 30px 0px;
+}
