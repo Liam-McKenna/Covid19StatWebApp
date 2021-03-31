@@ -1,14 +1,14 @@
-<?php require_once "../partials/header.php"; ?>
+<?php require_once "./partials/header.php"; ?>
 
 <body>
-    <?php include_once "../components/navbar.php"; ?>
+    <?php include_once "./components/navbar.php"; ?>
 
 
     <section class="access-form">
 
         <div class="loginComponent">
             <h2>login</h2>
-            <form action="../components/loginComponent.php" method="post">
+            <form action="./components/loginComponent.php" method="post">
                 <input type="text" name="userid" placeholder="Username/email...">
                 <input type="password" name="pwd" placeholder="Password...">
                 <button type="submit" name="submit">Log In</button>
