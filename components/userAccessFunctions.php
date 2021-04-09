@@ -45,7 +45,7 @@ function usernameExists($conn, $username, $email)
     $sql = "SELECT * FROM users WHERE username = ? OR email = ?;";
     $statement = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement, $sql)) {
-        header("location: ../pages/signup.php?error=statementFailed");
+        header("location: ../signup.php?error=statementFailed");
         exit();
     }
 
@@ -69,7 +69,7 @@ function createUser($conn, $name, $email, $username, $password)
     $sql = "INSERT INTO users(name, email, username, password) VALUES(?, ?, ?, ?);";
     $statement = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($statement, $sql)) {
-        header("location: ../pages/signup.php?error=statementFailed");
+        header("location: ../signup.php?error=statementFailed");
         exit();
     }
 
@@ -78,7 +78,7 @@ function createUser($conn, $name, $email, $username, $password)
     mysqli_stmt_bind_param($statement, "ssss", $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($statement);
     mysqli_stmt_close($statement);
-    header("location: ../pages/signup.php?error=none");
+    header("location: ../signup.php?error=none");
     exit();
 }
 
@@ -97,7 +97,7 @@ function loginUser($conn, $username, $password)
 {
     $userExists = usernameExists($conn, $username, $username);
     if ($userExists === false) {
-        header("location: ../pages/login.php?error=WrongCredentials");
+        header("location: ../login.php?error=WrongCredentials");
         exit();
     }
 
@@ -105,12 +105,12 @@ function loginUser($conn, $username, $password)
     $checkPassword = password_verify($password, $pwdHashed);
 
     if ($checkPassword === false) {
-        header("location: ../pages/login.php?error=WrongPassword");
+        header("location: ../login.php?error=WrongPassword");
         exit();
     } else if ($checkPassword === true) {
         session_start();
         $_SESSION["userid"] = $userExists['usersId'];
         $_SESSION["username"] = $userExists['username'];
-        header("location: ../pages/index.php");
+        header("location: ../index.php");
     }
 }

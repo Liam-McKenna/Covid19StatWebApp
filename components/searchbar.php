@@ -23,12 +23,12 @@ if (isset($_POST['SearchSubmit'])) {
     $country =  $_POST['search'];
     $_POST = array();
 
-    header()
+    //header()
 
-    // echo "
-    // <script>
-    // parent.self.location = \"singleCountry.php?countryCode=ie&countryName=" . $country . "\";
-    // </script>
-    // ";
+    echo "
+    <script>
+    parent.self.location = \"singleCountry.php?countryCode=ie&countryName=" . $country . "\";
+    </script>
+    ";
 }
 ?>

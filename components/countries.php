@@ -1,17 +1,18 @@
 <?php
 
 
-echo "<div class='country'>" . '<h3>', $countryName, '</h3>';
-$sqlQ2 = "SELECT * FROM $countryName ORDER BY date DESC LIMIT 6 ";
-$CountryData = $conn->query($sqlQ2);
+echo "<div class='country'>" . '<h3>', $countryName, ' - ', $countryCode, '</h3>';
+$sqlQ2 = "SELECT * FROM covid19Stats WHERE countryID = '$countryCode' ORDER BY reportDate DESC LIMIT 6;";
+$CountryResult = mysqli_query($conn, $sqlQ2);
+$countryCheck = mysqli_num_rows($CountryResult);
 
-if ($CountryData->num_rows > 0) {
+if ($countryCheck > 0) {
     // output data of each row
-    while ($rowData = $CountryData->fetch_assoc()) {
-        echo "<div class='row'>" . "cases " . $rowData["cases"] . " -- deaths: " . $rowData["deaths"] . " -- date: " . $rowData["date"] . "<br>" . "</div>";
+    while ($rowData = mysqli_fetch_assoc($CountryResult)) {
+        echo "<div class='row'>" . "cases " . $rowData["cases"] . " -- deaths: " . $rowData["deaths"] . " -- date: " . $rowData["reportDate"] . "<br>" . "</div>";
     }
 } else {
-    echo "0 results";
+    echo "<div class='row'> No Historical Data available for this country </div>";
 };
 
 $_SESSION[$countryName] = [$countryName];
@@ -19,13 +20,13 @@ $_SESSION[$countryName] = [$countryName];
 
 
 
-<button id='<?php echo $countryName; ?>' onClick=loadCountry('<?php echo $countryName; ?>')>See More.</button>
+<button id='<?php echo $countryName; ?>' onClick="loadCountry('<?php echo $countryCode; ?>' , '<?php echo $countryName; ?>' )">See More.</button>
 </div>
 
 <script>
-    function loadCountry(countryID) {
-        console.log(countryID);
-        document.cookie = 'selectedCountry=' + countryID;
-        window.location.href = `singleCountry.php?country=${countryID}`;
+    function loadCountry(countryCode, countryName) {
+        console.log(countryCode);
+        document.cookie = 'selectedCountry=' + countryCode;
+        window.location.href = `singleCountry.php?countryCode=${countryCode}&countryName=${countryName}`;
     }
 </script>

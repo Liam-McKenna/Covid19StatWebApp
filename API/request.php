@@ -1,6 +1,5 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <?php
-include_once "../database/herokuDBConnect.php";
+include_once "../database/dbConnection.php";
 ?>
 
 <form method="post">
@@ -12,10 +11,12 @@ include_once "../database/herokuDBConnect.php";
 
 
 
+
+
 <?php
 // this script will call the API for a list of all the countries that are available with data, it then adds the country identifier to the database.
 
-// if the button is clicked
+// if the button is clicked:
 if (isset($_POST['btnCountryUpdate'])) {
     // Call the API for All countries and add them to the database.
     $curl = curl_init();
@@ -32,6 +33,10 @@ if (isset($_POST['btnCountryUpdate'])) {
     $response = curl_exec($curl);
     $resJSON = json_decode($response, true);
     foreach ($resJSON['data'] as $item) {
+
+
+
+
         $countryName = $item['name'];
         $countryCode = $item['code'];
         $query = "INSERT INTO `countries`(countryName,countryCode) VALUES ('$countryName', '$countryCode');";
@@ -69,12 +74,28 @@ if (isset($_POST['btnDataUpdate'])) {
             ));
             $response = curl_exec($curl);
             $resJSON = json_decode($response, true);
-            foreach ($resJSON['data']['timeline'] as $entry) {
-                $queryAddData = "INSERT INTO `covid19Stats`(countryID, reportDate, cases, deaths) VALUES ('" . $countryRow['countryCode'] . "','" . $entry['date'] . "'," . $entry['new_confirmed'] . "," . $entry['new_deaths'] . ");";
-                $sqlQ1 = mysqli_query($conn, $queryAddData);
+
+            if (empty($resJSON['data']['timeline'])) {
+                echo $countryRow["countryName"] . " Is empty.<br><br>";
+                $queryDeleteCountry = "DELETE FROM countries WHERE countryName= '" . $countryRow['countryName'] . "';";
+                mysqli_query($conn, $queryDeleteCountry);
+            } else {
+
+                foreach ($resJSON['data']['timeline'] as $entry) {
+
+                    $queryAddData = "INSERT INTO `covid19Stats`(countryID, reportDate, cases, deaths) VALUES ('" . $countryRow['countryCode'] . "','" . $entry['date'] . "'," . $entry['new_confirmed'] . "," . $entry['new_deaths'] . ");";
+                    $sqlQ1 = mysqli_query($conn, $queryAddData);
+                }
+                echo $countryRow['countryName'] . " Successfully added. <br><br>  ";
             }
-            echo "<br> added " . $countryRow['countryName'];
         }
     }
 }
+
+
+if (isset($_POST['btnDeleteEmptyCountries'])) {
+}
+
+
+
 ?>

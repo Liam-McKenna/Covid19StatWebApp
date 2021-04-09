@@ -1,10 +1,10 @@
 <?php
 
-function errorHandler($n, $m, $f, $l)
-{
-    header('Location: index.php');
-}
-set_error_handler('errorHandler');
+// function errorHandler($n, $m, $f, $l)
+// {
+//     header('Location: index.php');
+// }
+// set_error_handler('errorHandler');
 
 require_once "./partials/header.php";
 include_once "./database/dbConnection.php";
@@ -18,19 +18,20 @@ include_once "./database/dbConnection.php";
     <main>
         <?php
         //$country = $_COOKIE['selectedCountry'];
-        $country = $_GET['country'];
+        $countryCode = $_GET['countryCode'];
+        $countryName = $_GET['countryName'];
 
-        $sqlCountryQuery = "SELECT * FROM $country ORDER BY date";
-        $SelectCountryData = $conn->query($sqlCountryQuery);
+        $sqlCountryQuery = "SELECT * FROM covid19Stats WHERE countryID = '$countryCode' ORDER BY reportDate ";
+        $SelectCountryData = mysqli_query($conn, $sqlCountryQuery);
 
 
 
         if ($SelectCountryData->num_rows > 0) {
             // output data of each row
 
-            echo "<div class='countryContainer'>" . "<div class='focus-country'>" . '<h3>', $country, '</h3>';
+            echo "<div class='countryContainer'>" . "<div class='focus-country'>" . '<h3>', $countryName, '</h3>';
             while ($rowData = $SelectCountryData->fetch_assoc()) {
-                echo "<div class='row'>" . "cases " . $rowData["cases"] . " -- deaths: " . $rowData["deaths"] . " -- date: " . $rowData["date"] . "<br>" . "</div>";
+                echo "<div class='row'>" . "cases " . $rowData["cases"] . " -- deaths: " . $rowData["deaths"] . " -- date: " . $rowData["reportDate"] . "<br>" . "</div>";
             }
         } else {
             echo "0 results";

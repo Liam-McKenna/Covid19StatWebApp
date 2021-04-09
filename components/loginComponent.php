@@ -9,12 +9,12 @@ if (isset($_POST["submit"])) {
     require_once 'userAccessFunctions.php';
 
     if (emptyInputLogin($loginUsername, $loginPassword) !== false) {
-        header("location: ../pages/login.php?error=emptyinput");
+        header("location: ../login.php?error=emptyinput");
         exit();
     }
 
     loginUser($conn, $loginUsername, $loginPassword);
 } else {
-    header("location: ../pages/login.php?error=failed");
+    header("location: ../login.php?error=failed");
     exit();
 }

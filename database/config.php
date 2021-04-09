@@ -1,9 +1,11 @@
 	
+	
 <?php
 // database configuration, separated for security
 $hn = 'localhost:3308';
-$db = 'covidDataDB';
+$db = 'covidapidata';
 $un = 'root';
 $pw = '';
 ?>
     
+  

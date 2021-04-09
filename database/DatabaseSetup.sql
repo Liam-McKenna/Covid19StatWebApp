@@ -7,6 +7,10 @@ use covidapidata;
 USE covidDataDB;
 # for admin database
 
+SELECT * FROM countries;
+SELECT * FROM covid19Stats WHERE countryID = 'AI';
+
+SELECT * FROM covid19Stats WHERE countryID = 'ie' ORDER BY reportDate DESC LIMIT 6;
 
 DROP TABLE IF EXISTS countries ;
 CREATE TABLE countries(

@@ -23,7 +23,8 @@ if (!$_GET['page']) {
         <div class=countryContainer>
             <?php
             // $query = "SHOW TABLES";
-            $query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'coviddatadb'; ";
+            $query = "SELECT countryName FROM countries; ";
+            // $query = "SELECT * FROM countries ";
             $sqlQ1 = mysqli_query($conn, $query);
 
             $numberResults  = $sqlQ1->num_rows;
@@ -36,14 +37,14 @@ if (!$_GET['page']) {
             $numberPages = ceil($numberResults / $resultsPerPage);
             $this_page_first_result = ($page - 1) * $resultsPerPage;
 
-            $query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'coviddatadb' LIMIT $this_page_first_result, $resultsPerPage; ";
-            $perPage = mysqli_query($conn, $query);
+            $query = "SELECT * FROM countries LIMIT $this_page_first_result, $resultsPerPage; ";
+            $countriesResult = mysqli_query($conn, $query);
+            $countriesCheck = mysqli_num_rows($countriesResult);
+            if ($countriesCheck > 0) {
 
-
-            while ($tableName = mysqli_fetch_row($perPage)) {
-
-                $countryName = $tableName[0];
-                if ($countryName != "users") {
+                while ($countryData = mysqli_fetch_assoc($countriesResult)) {
+                    $countryName = $countryData['countryName'];
+                    $countryCode = $countryData['countryCode'];
                     include "./components/countries.php";
                 }
             }
