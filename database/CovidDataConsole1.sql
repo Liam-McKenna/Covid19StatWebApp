@@ -1,12 +1,8 @@
 #create schema covidData;
 CREATE schema covidDataDB;
-USE assignment;
+
 USE covidDataDB;
 # for admin database
-
-
-SHOW TABLES;
-SELECT * FROM Ireland;
 
 CREATE TABLE Ireland(
     date DATE,
@@ -112,9 +108,10 @@ CREATE TABLE users(
     email varchar(128) NOT NULL,
     password varchar(128) NOT NULL
 );
-DROP TABLE users;
+#DROP TABLE users;
 
-
+SHOW TABLES;
+SELECT * FROM Ireland;
 
 
 SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'coviddatadb'  LIMIT 5,5;

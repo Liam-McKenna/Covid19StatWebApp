@@ -1,16 +1,20 @@
-<?php require_once "../partials/header.php";
-include_once "../database/dbConnection.php";
-# if the user tries to access this page without cookie cache
+<?php
+
 function errorHandler($n, $m, $f, $l)
 {
     header('Location: index.php');
 }
 set_error_handler('errorHandler');
+
+require_once "./partials/header.php";
+include_once "./database/dbConnection.php";
+
+
 ?>
 
 
 <body>
-    <?php include_once "../components/navbar.php"; ?>
+    <?php include_once "./components/navbar.php"; ?>
     <main>
         <?php
         //$country = $_COOKIE['selectedCountry'];
