@@ -4,7 +4,7 @@ use covidapidata;
 
 # SET @MAX_QUESTIONS=0;
 
-USE covidDataDB;
+# USE covidDataDB;
 # for admin database
 
 SELECT * FROM countries;

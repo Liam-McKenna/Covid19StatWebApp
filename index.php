@@ -14,17 +14,19 @@ if (!$_GET['page']) {
 
 
         <h1>Covid19 Data Tracker</h1>
-        <?php include_once "./components/searchbar.php"; ?>
+        <?php include_once "./components/searchbar.php";
+        ?>
+
 
         <?php
         $paginator = 0;
         $resultsPerPage = 6;
         ?>
+
+        <!-- if search isnt active -->
         <div class=countryContainer>
             <?php
-            // $query = "SHOW TABLES";
             $query = "SELECT countryName FROM countries; ";
-            // $query = "SELECT * FROM countries ";
             $sqlQ1 = mysqli_query($conn, $query);
 
             $numberResults  = $sqlQ1->num_rows;
@@ -37,7 +39,7 @@ if (!$_GET['page']) {
             $numberPages = ceil($numberResults / $resultsPerPage);
             $this_page_first_result = ($page - 1) * $resultsPerPage;
 
-            $query = "SELECT * FROM countries LIMIT $this_page_first_result, $resultsPerPage; ";
+            $query = "SELECT * FROM countries LIMIT $this_page_first_result , $resultsPerPage; ";
             $countriesResult = mysqli_query($conn, $query);
             $countriesCheck = mysqli_num_rows($countriesResult);
             if ($countriesCheck > 0) {
@@ -49,6 +51,9 @@ if (!$_GET['page']) {
                 }
             }
             ?>
+
+
+
         </div>
         <div class="paginator">
             <button class="pageback" id="back" onclick="window.location.href='index.php?page=<?php echo $_GET['page'] - 1; ?>'">
