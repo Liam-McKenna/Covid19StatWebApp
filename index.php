@@ -1,6 +1,7 @@
 <?php
 require_once "./partials/header.php";
 include_once "./database/dbConnection.php";
+
 if (!$_GET['page']) {
     header("location: ./index.php?page=1");
 }
@@ -9,6 +10,7 @@ if (!$_GET['page']) {
 
 
 <body>
+
     <?php include_once "./components/navbar.php"; ?>
     <main>
 
