@@ -1,5 +1,5 @@
 <?php
-include_once "../database/dbConnection.php";
+include_once "./database/dbConnection.php";
 ?>
 
 <form method="post">
