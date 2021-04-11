@@ -22,11 +22,3 @@ $_SESSION[$countryName] = [$countryName];
 
 <button id='<?php echo $countryName; ?>' onClick="loadCountry('<?php echo $countryCode; ?>' , '<?php echo $countryName; ?>' )">See More.</button>
 </div>
-
-<script>
-    function loadCountry(countryCode, countryName) {
-        console.log(countryCode);
-        document.cookie = 'selectedCountry=' + countryCode;
-        window.location.href = `singleCountry.php?countryCode=${countryCode}&countryName=${countryName}`;
-    }
-</script>

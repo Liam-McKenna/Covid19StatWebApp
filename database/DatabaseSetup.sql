@@ -8,6 +8,7 @@ use covidapidata;
 # for admin database
 
 SELECT * FROM countries;
+SELECT countryName FROM countries WHERE countryName LIKE 'i%';
 SELECT * FROM covid19Stats WHERE countryID = 'AI';
 
 SELECT * FROM covid19Stats WHERE countryID = 'ie' ORDER BY reportDate DESC LIMIT 6;
