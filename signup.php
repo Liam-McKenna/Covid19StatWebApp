@@ -12,8 +12,16 @@
                 <input type="text" name="name" placeholder="Full name...">
                 <input type="text" name="email" placeholder="Email...">
                 <input type="text" name="userN" placeholder="Username...">
-                <input type="password" name="pwd" placeholder="Password...">
-                <input type="password" name="repeatPwd" placeholder="Confirm password...">
+                <div class="pwtoggleContainer">
+                    <input id="password" type="password" name="pwd" placeholder="Password...">
+                    <img id="togglePW" class="togglePassword" src="./img/eye-open.svg"></img>
+                </div>
+                <div class="pwtoggleContainer">
+                    <input id="confrimPw" type="password" name="repeatPwd" placeholder="Confirm password...">
+                    <img id="toggleCPW" class="toggleCPassword" src="./img/eye-open.svg"></img>
+                </div>
+
+
                 <button type="submit" name="submit">Sign Up</button>
             </form>
         </div>
@@ -40,3 +48,31 @@ if (isset($_GET['error'])) {
     }
 }
 ?>
+
+
+<Script>
+    var togglePW = document.getElementById("togglePW");
+    var toggleCPW = document.getElementById("toggleCPW");
+
+    togglePW.addEventListener('click', function(e) {
+        const pwinput = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', pwinput);
+
+        const pwimg = togglePW.getAttribute('src') === './img/eye-open.svg' ? './img/eye-closed.svg' : './img/eye-open.svg';
+        togglePW.setAttribute('src', pwimg);
+
+
+    })
+
+    toggleCPW.addEventListener('click', function(e) {
+        const pwcinput = confrimPw.getAttribute('type') === 'password' ? 'text' : 'password';
+        confrimPw.setAttribute('type', pwcinput);
+
+        const pwimg = toggleCPW.getAttribute('src') === './img/eye-open.svg' ? './img/eye-closed.svg' : './img/eye-open.svg';
+        toggleCPW.setAttribute('src', pwimg);
+
+
+
+
+    })
+</Script>

@@ -10,7 +10,10 @@
             <h2>login</h2>
             <form action="./components/loginComponent.php" method="post">
                 <input type="text" name="userid" placeholder="Username/email...">
-                <input type="password" name="pwd" placeholder="Password...">
+                <div class="pwtoggleContainer">
+                    <input id="password" type="password" name="pwd" placeholder="Password...">
+                    <img id="togglePW" class="togglePassword" src="./img/eye-open.svg"></img>
+                </div>
                 <button type="submit" name="submit">Log In</button>
             </form>
         </div>
@@ -33,3 +36,18 @@ if (isset($_GET['error'])) {
     }
 }
 ?>
+
+
+<Script>
+    var togglePW = document.getElementById("togglePW");
+
+    togglePW.addEventListener('click', function(e) {
+        const pwinput = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', pwinput);
+
+        const pwimg = togglePW.getAttribute('src') === './img/eye-open.svg' ? './img/eye-closed.svg' : './img/eye-open.svg';
+        togglePW.setAttribute('src', pwimg);
+
+
+    })
+</script>

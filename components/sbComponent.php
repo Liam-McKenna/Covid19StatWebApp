@@ -108,8 +108,6 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
                         echo '<a class="page-numbers" id="page' . $page . '" href="index.php?page=' . $page . '"> ' . $page . '</a>';
                     } ?>
                 </div>
-
-
                 <button class="pageforward" id="forward" onclick="window.location.href='index.php?page=<?php if ($currentPage < $numberPages) {
                                                                                                             echo $currentPage + 1;
                                                                                                         } else {

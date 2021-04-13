@@ -19,8 +19,9 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-track {
   background: #1e1e24;
 }
+
 body::-webkit-scrollbar-thumb {
-  background: #5050a1;
+  background: var(--Primary);
 }
 
 main {
@@ -80,7 +81,7 @@ main {
 
 .navlink:hover {
   filter: grayscale(0%) opacity(1);
-  color: #1890ff;
+  color: var(--Primary);
   transition: var(--transition-speed);
   background-color: var(--bg-secondary);
 }
@@ -115,8 +116,27 @@ main {
   .navbar-nav {
     flex-direction: row;
   }
-  .nav-link {
+
+  .nav-item:last-child {
+    margin-top: auto;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+  }
+  .navlink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .link-text {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    margin: 0.5rem 0rem 0rem 0rem;
+    width: 100%;
   }
 
   main {

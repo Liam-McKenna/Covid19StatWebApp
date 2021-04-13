@@ -1,8 +1,9 @@
 
 #CREATE DATABASE covidapidata;
-#use covidapidata;
+use covidapidata;
+use heroku_9c118c3fb745a2a;
 
-# SET @MAX_QUESTIONS=0;
+SET @MAX_QUESTIONS=0;
 
 # USE covidDataDB;
 # for admin database
@@ -41,12 +42,15 @@ CREATE TABLE users(
 
 
 
+SHOW GLOBAL STATUS LIKE 'questions';
+
+
 
 ## get size of the database
-# SELECT table_schema AS "Database",
-# ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
-# FROM information_schema.TABLES
-# GROUP BY table_schema;
+SELECT table_schema AS "Database",
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
+FROM information_schema.TABLES
+GROUP BY table_schema;
 
 
 

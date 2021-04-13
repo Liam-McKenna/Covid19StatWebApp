@@ -1,7 +1,6 @@
 <?php
 function emptyInputSignup($name, $email, $username, $password, $repeatPassword)
 {
-    #$result;
     if (empty($name) || empty($email) || empty($username) || empty($password) || empty($repeatPassword)) {
         $result = true;
     } else {
@@ -11,7 +10,6 @@ function emptyInputSignup($name, $email, $username, $password, $repeatPassword)
 }
 function invalidUsername($username)
 {
-    #$result;
     if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $result = true;
     } else {
@@ -21,7 +19,6 @@ function invalidUsername($username)
 }
 function invalidEmail($email)
 {
-    #$result;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
     } else {
@@ -31,7 +28,6 @@ function invalidEmail($email)
 }
 function pwdMatch($password, $repeatPassword)
 {
-    #$result;
     if ($password !== $repeatPassword) {
         $result = true;
     } else {

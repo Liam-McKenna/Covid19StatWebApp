@@ -49,7 +49,7 @@ if (isset($_POST['btnCountryUpdate'])) {
 
 
 <?php
-// this script will queery the database for all the countries entered, then for each country it will make an API call to get the covid19 dat for that country. Then for each row of data for that country it will post it to the database, repeats for each country.
+// this script will queery the database for all the countries entered, then for each country it will make an API call to get the covid19 dat for that country. Then for each row of data for that country it will post it to the database, repeats for each country. If there is a country without any timeline data, it will delete the country from the database.
 
 // if the button is clicked
 if (isset($_POST['btnDataUpdate'])) {
@@ -91,11 +91,6 @@ if (isset($_POST['btnDataUpdate'])) {
         }
     }
 }
-
-
-if (isset($_POST['btnDeleteEmptyCountries'])) {
-}
-
 
 
 ?>
