@@ -103,7 +103,9 @@ include_once "./database/dbConnection.php";
                     borderWidth: 1,
                     borderColor: '#ffb259',
                     hoverBorderWidth: '10',
-                    hoverBorderColor: 'white'
+                    hoverBorderColor: 'white',
+                    pointRadius: 1,
+                    pointHoverRadius: 1
                 },
                 {
                     label: 'Deaths',
@@ -113,12 +115,15 @@ include_once "./database/dbConnection.php";
                     borderWidth: 1,
                     borderColor: 'red',
                     hoverBorderWidth: '10',
-                    hoverBorderColor: 'white'
+                    hoverBorderColor: 'white',
+                    pointRadius: 1,
+                    pointHoverRadius: 1
                 }
             ]
         },
 
         options: {
+
             responsive: true,
             plugins: {
                 legend: {
