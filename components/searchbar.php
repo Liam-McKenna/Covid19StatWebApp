@@ -42,7 +42,7 @@
             let pageNumber = <?php echo $_GET['page'] ?>;
             if (pageNumber && document.getElementById("page" + pageNumber)) {
                 pageId = document.getElementById("page" + pageNumber);
-                pageId.style.color = "var(--Cpink)";
+                pageId.style.color = "var(--Primary)";
             }
         });
     })

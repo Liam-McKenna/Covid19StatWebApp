@@ -31,8 +31,6 @@
         </li>
 
 
-
-
         <li class="nav-item">
             <a href="index.php" class="navlink">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,15 +39,17 @@
                 <span class="link-text">Countries</span>
             </a>
         </li>
+        <?php if (!isset($_SESSION['userid'])) { ?>
+            <li class="nav-item">
+                <a href="signup.php" class="navlink">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                    </svg>
+                    <span class="link-text">Signup</span>
+                </a>
+            </li>
+        <?PHP } ?>
 
-        <li class="nav-item">
-            <a href="signup.php" class="navlink">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                </svg>
-                <span class="link-text">Signup</span>
-            </a>
-        </li>
         <li class="nav-item">
             <a href="login.php" class="navlink">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,44 +58,41 @@
                 <span class="link-text">TBA</span>
             </a>
         </li>
-        <?php
+        <?php if (isset($_SESSION['userid'])) { ?>
+            <li class="nav-item">
+                <a href="./adminSettings.php" class="navlink">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    <span class="link-text">
+                        Settings
+                    </span>
 
-        if (isset($_SESSION['userid'])) {
-            echo '<li class="nav-item">
-            <a href="./adminSettings.php" class="navlink">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-          </svg>
-                <span class="link-text">
-                    Settings
-                </span>
-        
-            </a>
+                </a>
             </li>
 
-        <li class="nav-item">
-            <a href="./components/logoutComponent.php" class="navlink">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-          </svg>
-                <span class="link-text">
-                    Logout
-                </span>
-            </a>
-        </li>';
-        } else {
-            echo '<li class="nav-item">
-           
-            <a href="./login.php" class="navlink">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-          </svg>
-                <span class="link-text">
-                    Login
-                </span>
-            </a>
-        </li>';
-        }
-        ?>
+            <li class="nav-item">
+                <a href="./components/logoutComponent.php" class="navlink">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    <span class="link-text">
+                        Logout
+                    </span>
+                </a>
+            </li>
+        <?PHP } else { ?>
+            <li class="nav-item">
+
+                <a href="./login.php" class="navlink">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                    </svg>
+                    <span class="link-text">
+                        Login
+                    </span>
+                </a>
+            </li>
+        <?PHP } ?>
     </ul>
 </div>

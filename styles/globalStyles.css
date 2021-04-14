@@ -94,6 +94,35 @@ input:focus {
   cursor: pointer;
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 10px 10px;
+}
+
+th {
+  color: white;
+}
+
+.left-td {
+  border-radius: 15px 0px 0px 15px;
+}
+.center-td {
+}
+.right-td {
+  border-radius: 0px 15px 15px 0px;
+}
+
+td {
+  color: lightgrey;
+  background-color: var(--ClightG);
+  padding: 0.4rem;
+
+  transition: 150ms ease;
+}
+td:hover {
+  transform: scale(1.04);
+}
+
 .row {
   color: lightgrey;
   background-color: var(--ClightG);
@@ -143,4 +172,79 @@ button:active {
 }
 .pageforward {
   border-radius: 0px 30px 30px 0px;
+}
+
+.AllDataContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.chartContainer {
+  background-color: var(--Cdarkgrey);
+  margin: 1rem;
+  border-radius: 25px;
+  width: 90%;
+
+  min-width: 25rem;
+  background-color: var(--Cdarkgrey);
+}
+
+.chart canvas {
+}
+
+.countryContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.country {
+  width: 25%;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  background-color: var(--Cdarkgrey);
+  margin: 1rem;
+  border-radius: 25px;
+}
+
+.paginator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-numbers {
+  margin: 3rem;
+}
+
+.focus-country {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  background-color: var(--Cdarkgrey);
+  margin: 1rem;
+  border-radius: 25px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .focus-country {
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--Cdarkgrey);
+    margin: 1rem;
+    border-radius: 25px;
+  }
 }
