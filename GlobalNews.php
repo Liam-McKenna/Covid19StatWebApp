@@ -2,7 +2,6 @@
 require_once "./partials/header.php";
 include_once "./database/dbConnection.php";
 
-
 $ChartsGlobalQuery = "SELECT * FROM globalcovid ORDER BY globaldate DESC;";
 $SelectGlobalData = mysqli_query($conn, $ChartsGlobalQuery);
 $DateArray = [];
@@ -15,9 +14,6 @@ while ($data = $SelectGlobalData->fetch_assoc()) {
     array_push($DeathsArray,  $data['deaths']);
     array_push($RecoveryArray,  $data['recovered']);
 };
-
-
-
 $TopGlobalQuery = "SELECT countries.countryName, covid19stats.reportDate, covid19stats.cases, covid19stats.deaths FROM covid19stats
 INNER JOIN countries ON covid19stats.countryID=countries.countryCode WHERE reportDate = (SELECT MAX(reportDate) FROM covid19stats) ORDER BY cases desc limit 5;";
 $SelectTopGlobal = mysqli_query($conn, $TopGlobalQuery);
@@ -26,13 +22,11 @@ $DateTop = [];
 $CasesTop = [];
 $DeathsTop = [];
 while ($data = $SelectTopGlobal->fetch_assoc()) {
-
     array_push($CountryName,  $data['countryName']);
     array_push($DateTop,  $data['reportDate']);
     array_push($CasesTop,  $data['cases']);
     array_push($DeathsTop,  $data['deaths']);
 };
-
 ?>
 
 <body>
@@ -77,11 +71,6 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
             </div>
 
         </div>
-
-
-
-
-
     </main>
 </body>
 

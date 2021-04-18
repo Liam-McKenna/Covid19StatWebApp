@@ -11,8 +11,6 @@ $countryCode = $_GET['countryCode'];
 $countryName = $_GET['countryName'];
 ?>
 
-
-
 <body>
     <?php include_once "./components/navbar.php"; ?>
     <main>
@@ -21,10 +19,6 @@ $countryName = $_GET['countryName'];
             <div class="chartContainer">
                 <canvas class="chart" id="myChart"></canvas>
             </div>
-
-
-
-
             <?php
             //$country = $_COOKIE['selectedCountry'];
             $sqlCountryQuery = "SELECT * FROM covid19Stats WHERE countryID = '$countryCode' ORDER BY reportDate DESC ";
@@ -75,8 +69,6 @@ $countryName = $_GET['countryName'];
             ?>
     </main>
 </body>
-
-
 <script>
     let dateArray = <?php echo json_encode($DateArray); ?>;
     let casesArray = <?php echo json_encode($CasesArray); ?>;
