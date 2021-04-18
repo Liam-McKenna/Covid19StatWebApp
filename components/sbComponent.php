@@ -1,13 +1,10 @@
 <?PHP
 include_once "../database/dbConnection.php";
-
 if (isset($_POST['currentPage'])) {
     $currentPage = $_POST['currentPage'];
 } else {
     $currentPage = 1;
 }
-
-
 //checks if there is a search. needed to stop null value breaking the page when first loaded.
 if (!empty($searchEntry = $_POST['searchEntry'])) {
     //echo $searchEntry = $_POST['searchEntry'];
@@ -15,7 +12,6 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
     $paginator = 0;
     $resultsPerPage = 6;
 ?>
-
     <!-- if search isnt active -->
     <div class=countryContainer>
         <?php
@@ -31,7 +27,6 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
         }
         $numberPages = ceil($numberResults / $resultsPerPage);
         $this_page_first_result = ($page - 1) * $resultsPerPage;
-
         $query = "SELECT * FROM countries WHERE countryName LIKE '$searchEntry%' LIMIT $this_page_first_result , $resultsPerPage; ";
         $countriesResult = mysqli_query($conn, $query);
         $countriesCheck = mysqli_num_rows($countriesResult);
@@ -44,15 +39,7 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
             }
         }
         ?>
-
-
-
     </div>
-
-
-
-
-
 <?PHP
     // IF THERE IS NOTHING ENTERED IN SEARCH BAR.
 } else {
@@ -61,7 +48,6 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
     $paginator = 0;
     $resultsPerPage = 6;
 ?>
-
     <!-- if search isnt active -->
     <div class=countryContainer>
         <?php
@@ -90,15 +76,8 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
             }
         }
         ?>
-
-
-
     </div>
     <div class="paginator">
-
-
-
-
         <button class="pageback" id="back" onclick="window.location.href='index.php?page=<?php echo $currentPage - 1; ?>'">
             < </button>
 
@@ -116,12 +95,8 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
                                                                                                         } else {
                                                                                                             echo $numberPages;
                                                                                                         }    ?>'">></button>
-
     </div>
     </main>
-
-
-
 <?PHP
 }
 ?>

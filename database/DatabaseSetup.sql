@@ -54,7 +54,8 @@ FROM information_schema.TABLES
 GROUP BY table_schema;
 
 
-
+SELECT countries.countryName, covid19stats.reportDate, covid19stats.cases, covid19stats.deaths FROM covid19stats
+INNER JOIN countries ON covid19stats.countryID=countries.countryCode WHERE reportDate = (SELECT MAX(reportDate) FROM covid19stats) ORDER BY cases desc limit 10;
 
 
 

@@ -179,10 +179,29 @@ button:active {
 }
 
 .todayGlobal {
-  margin: 2rem;
+  margin: 0rem 2rem 0rem 0rem;
   display: inline-block;
   background-color: var(--Cdarkgrey);
   border-radius: 15px;
+}
+
+.globalTables {
+  display: flex;
+  flex-direction: column;
+}
+
+.todayContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: top;
+}
+.todayGlobal {
+  display: inline-block;
+}
+.todayGlobal td {
+  padding: 1rem 5rem 1rem 5rem;
 }
 
 .globalDataToday {
@@ -195,12 +214,17 @@ button:active {
   margin: 0rem 2rem 2rem 2rem;
 }
 
-.chartContainer {
+.chartContainer,
+.chartContainer-global {
   background-color: var(--Cdarkgrey);
   border-radius: 25px;
-  width: 100%;
+  width: 90vw;
   min-width: 25rem;
   background-color: var(--Cdarkgrey);
+}
+
+.chartContainer-global {
+  max-width: 75rem;
 }
 
 .countryContainer {

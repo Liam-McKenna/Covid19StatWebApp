@@ -1,40 +1,86 @@
 <?php
 require_once "./partials/header.php";
 include_once "./database/dbConnection.php";
+
+
+$ChartsGlobalQuery = "SELECT * FROM globalcovid ORDER BY globaldate DESC;";
+$SelectGlobalData = mysqli_query($conn, $ChartsGlobalQuery);
+$DateArray = [];
+$CasesArray = [];
+$DeathsArray = [];
+$RecoveryArray = [];
+while ($data = $SelectGlobalData->fetch_assoc()) {
+    array_push($DateArray,  $data['globalDate']);
+    array_push($CasesArray,  $data['cases']);
+    array_push($DeathsArray,  $data['deaths']);
+    array_push($RecoveryArray,  $data['recovered']);
+};
+
+
+
+$TopGlobalQuery = "SELECT countries.countryName, covid19stats.reportDate, covid19stats.cases, covid19stats.deaths FROM covid19stats
+INNER JOIN countries ON covid19stats.countryID=countries.countryCode WHERE reportDate = (SELECT MAX(reportDate) FROM covid19stats) ORDER BY cases desc limit 5;";
+$SelectTopGlobal = mysqli_query($conn, $TopGlobalQuery);
+$CountryName = [];
+$DateTop = [];
+$CasesTop = [];
+$DeathsTop = [];
+while ($data = $SelectTopGlobal->fetch_assoc()) {
+
+    array_push($CountryName,  $data['countryName']);
+    array_push($DateTop,  $data['reportDate']);
+    array_push($CasesTop,  $data['cases']);
+    array_push($DeathsTop,  $data['deaths']);
+};
+
 ?>
 
 <body>
     <?php include_once "./components/navbar.php"; ?>
     <main>
-        <div class="globalcontainer">
-            <h1>Global Data</h1>
-            <div class="chartContainer">
-                <canvas class="chart" id="myChart"></canvas>
+
+        <div class="todayContainer">
+            <div class="globalTables">
+                <h1>Global Data For Today</h1>
+                <table class="todayGlobal">
+                    <tr>
+                        <th>Cases</th>
+                        <th>Deaths</th>
+                        <th>Recovery</th>
+                    </tr>
+                    <tr>
+                        <td id="cases">Cases: </td>
+                        <td id="deaths">Deaths: </td>
+                        <td id="recovered">Recovered: </td>
+                    </tr>
+                </table>
+                <h1>highest 5 countries Today</h1>
+                <table class="todayGlobal">
+                    <tr>
+                        <th>Country</th>
+                        <th>Cases</th>
+                        <th>Deaths</th>
+                    </tr>
+                    <?php
+                    for ($x = 0; $x <= 4; $x++) {
+                        echo "    <tr><td>" . $CountryName[$x] . "</td> <td>" . $CasesTop[$x] . " </td> <td> " . $DeathsTop[$x] . " </td> </tr>";
+                    } ?>
+                </table>
             </div>
-            <?php
-            $ChartsGlobalQuery = "SELECT * FROM globalcovid ORDER BY globaldate DESC";
-            $SelectGlobalData = mysqli_query($conn, $ChartsGlobalQuery);
-            $DateArray = [];
-            $CasesArray = [];
-            $DeathsArray = [];
-            $RecoveryArray = [];
-            while ($data = $SelectGlobalData->fetch_assoc()) {
-                array_push($DateArray,  $data['globalDate']);
-                array_push($CasesArray,  $data['cases']);
-                array_push($DeathsArray,  $data['deaths']);
-                array_push($RecoveryArray,  $data['recovered']);
-            };
-            ?>
+
+
+            <div class="global-chart-container">
+                <h1>Global Graph</h1>
+                <div class="chartContainer-global">
+                    <canvas class="chart" id="myChart"></canvas>
+                </div>
+            </div>
+
         </div>
 
-        <div class="todayGlobal">
-            <h1>Today</h1>
-            <div class="globalDataToday">
-                <h2 id="cases">Cases: </h2>
-                <h2 id="deaths">Deaths: </h2>
-                <h2 id="recovered">Recovered: </h2>
-            </div>
-        </div>
+
+
+
 
     </main>
 </body>
@@ -45,9 +91,9 @@ include_once "./database/dbConnection.php";
     let deathsArray = <?php echo json_encode($DeathsArray); ?>;
     let RecoveryArray = <?php echo json_encode($RecoveryArray); ?>;
 
-    document.getElementById('cases').innerHTML = `Cases: ${casesArray[0]}`;
-    document.getElementById('deaths').innerHTML = `Cases: ${deathsArray[0]}`;
-    document.getElementById('recovered').innerHTML = `Cases: ${RecoveryArray[0]}`;
+    document.getElementById('cases').innerHTML = `${casesArray[0]}`;
+    document.getElementById('deaths').innerHTML = `${deathsArray[0]}`;
+    document.getElementById('recovered').innerHTML = `${RecoveryArray[0]}`;
 
 
     let myChart = document.getElementById('myChart').getContext('2d');
@@ -101,7 +147,7 @@ include_once "./database/dbConnection.php";
                 },
                 title: {
                     display: true,
-                    text: 'gloval Data'
+                    text: 'global Data'
                 }
             },
             scales: {
