@@ -104,8 +104,11 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
 
                 <div class=" currentPageRange" id="currentpage">
                     <?php
-                    for ($page = $currentPage; $page <= $numberPages && $page <= $currentPage + 5; $page++) {
-                        echo '<a class="page-numbers" id="page' . $page . '" href="index.php?page=' . $page . '"> ' . $page . '</a>';
+                    for ($page = $currentPage - 1; $page <= $numberPages && $page <= $currentPage + 5; $page++) {
+
+                        if ($page > 0) {
+                            echo '<a class="page-numbers" id="page' . $page . '" href="index.php?page=' . $page . '"> ' . $page . '</a>';
+                        }
                     } ?>
                 </div>
                 <button class="pageforward" id="forward" onclick="window.location.href='index.php?page=<?php if ($currentPage < $numberPages) {
