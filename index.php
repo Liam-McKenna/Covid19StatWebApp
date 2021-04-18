@@ -20,6 +20,7 @@ if (!$_GET['page']) {
         <h1>Covid19 Data Tracker</h1>
         <?php include_once "./components/searchbar.php";
         ?>
+    </main>
 
 
 </body>

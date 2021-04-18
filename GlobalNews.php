@@ -1,87 +1,53 @@
 <?php
-function errorHandler($n, $m, $f, $l)
-{
-    header('Location: index.php');
-}
-set_error_handler('errorHandler');
 require_once "./partials/header.php";
 include_once "./database/dbConnection.php";
-
-$countryCode = $_GET['countryCode'];
-$countryName = $_GET['countryName'];
 ?>
-
-
 
 <body>
     <?php include_once "./components/navbar.php"; ?>
     <main>
-        <h1>Data Hub: <?php echo $countryName ?> </h1>
-        <div class="AllDataContainer">
+        <div class="globalcontainer">
+            <h1>Global Data</h1>
             <div class="chartContainer">
                 <canvas class="chart" id="myChart"></canvas>
             </div>
-
-
-
-
             <?php
-            //$country = $_COOKIE['selectedCountry'];
-            $sqlCountryQuery = "SELECT * FROM covid19Stats WHERE countryID = '$countryCode' ORDER BY reportDate DESC ";
-            $ChartsCountryQuery = "SELECT * FROM covid19Stats WHERE countryID = '$countryCode' ORDER BY reportDate";
-            $SelectCountryData = mysqli_query($conn, $sqlCountryQuery);
-            $CountryDataCharts = mysqli_query($conn, $ChartsCountryQuery);
+            $ChartsGlobalQuery = "SELECT * FROM globalcovid ORDER BY globaldate DESC";
+            $SelectGlobalData = mysqli_query($conn, $ChartsGlobalQuery);
             $DateArray = [];
             $CasesArray = [];
             $DeathsArray = [];
-            while ($data = $CountryDataCharts->fetch_assoc()) {
-                array_push($DateArray,  $data['reportDate']);
+            $RecoveryArray = [];
+            while ($data = $SelectGlobalData->fetch_assoc()) {
+                array_push($DateArray,  $data['globalDate']);
                 array_push($CasesArray,  $data['cases']);
                 array_push($DeathsArray,  $data['deaths']);
+                array_push($RecoveryArray,  $data['recovered']);
             };
-            if ($SelectCountryData->num_rows > 0) {
-                // output data of each row
-                echo "<div class='countryContainer'>" . "<div class='focus-country'>" . '<h3>', $countryName, '</h3>';
             ?>
-                <table id="' . $countryCode . 'Table" class="tableDisplay">
-                    <thead>
-                        <tr>
-                            <th>cases</th>
-                            <th>deaths</th>
-                            <th>reportDate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?PHP
+        </div>
 
-                        while ($rowData = $SelectCountryData->fetch_assoc()) {
-                            echo '
-                <tr>
-                <td class="left-td">' . $rowData["cases"] . '</td>
-                <td class="center-td">' . $rowData["deaths"] . '</td>
-                <td class="right-td">' . $rowData["reportDate"] . '</td>
-                </tr>';
-                        }
-                        ?>
+        <div class="todayGlobal">
+            <h1>Today</h1>
+            <div class="globalDataToday">
+                <h2 id="cases">Cases: </h2>
+                <h2 id="deaths">Deaths: </h2>
+                <h2 id="recovered">Recovered: </h2>
+            </div>
+        </div>
 
-                    </tbody>
-                </table>
-            <?PHP
-            } else {
-                echo "0 results";
-            };
-
-            echo "</div> </div> </div> ";
-            ?>
     </main>
 </body>
-
 
 <script>
     let dateArray = <?php echo json_encode($DateArray); ?>;
     let casesArray = <?php echo json_encode($CasesArray); ?>;
     let deathsArray = <?php echo json_encode($DeathsArray); ?>;
-    let countryName = "<?php echo $countryName; ?>";
+    let RecoveryArray = <?php echo json_encode($RecoveryArray); ?>;
+
+    document.getElementById('cases').innerHTML = `Cases: ${casesArray[0]}`;
+    document.getElementById('deaths').innerHTML = `Cases: ${deathsArray[0]}`;
+    document.getElementById('recovered').innerHTML = `Cases: ${RecoveryArray[0]}`;
 
 
     let myChart = document.getElementById('myChart').getContext('2d');
@@ -112,10 +78,21 @@ $countryName = $_GET['countryName'];
                     hoverBorderColor: 'white',
                     pointRadius: 1,
                     pointHoverRadius: 1
+                },
+                {
+                    label: 'Recovery',
+                    data: [].concat(RecoveryArray),
+                    fill: false,
+                    backgroundColor: 'lightblue',
+                    borderWidth: 1,
+                    borderColor: 'lightblue',
+                    hoverBorderWidth: '10',
+                    hoverBorderColor: 'white',
+                    pointRadius: 1,
+                    pointHoverRadius: 1
                 }
             ]
         },
-
         options: {
             responsive: true,
             plugins: {
@@ -124,7 +101,7 @@ $countryName = $_GET['countryName'];
                 },
                 title: {
                     display: true,
-                    text: countryName
+                    text: 'gloval Data'
                 }
             },
             scales: {
