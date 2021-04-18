@@ -179,7 +179,10 @@ button:active {
 
 .todayGlobal {
   margin: 0rem 2rem 0rem 0rem;
+
   display: inline-block;
+  align-items: center;
+  text-align: center;
   background-color: var(--Cdarkgrey);
   border-radius: 15px;
 }
@@ -187,6 +190,12 @@ button:active {
 .globalTables {
   display: flex;
   flex-direction: column;
+  margin-right: 2rem;
+  align-items: center;
+}
+
+.globalTables td {
+  padding: 1rem 2rem 1rem 2rem;
 }
 
 .todayContainer {
@@ -195,12 +204,6 @@ button:active {
   flex-wrap: wrap;
   justify-content: center;
   align-items: top;
-}
-.todayGlobal {
-  display: inline-block;
-}
-.todayGlobal td {
-  padding: 1rem 5rem 1rem 5rem;
 }
 
 .globalDataToday {
@@ -218,7 +221,6 @@ button:active {
   background-color: var(--Cdarkgrey);
   border-radius: 25px;
   width: 90vw;
-  min-width: 25rem;
   background-color: var(--Cdarkgrey);
 }
 
@@ -290,8 +292,21 @@ button:active {
     border-radius: 25px;
   }
 
+  .todayGlobal {
+    align-items: center;
+    text-align: center;
+    margin: 0rem 0rem 0rem 0rem;
+  }
+
   .todayGlobal td {
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 1rem 1rem 1rem 1rem;
+    margin-right: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .globalTables {
+    margin-right: 0;
   }
 
   main {

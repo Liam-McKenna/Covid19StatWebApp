@@ -50,6 +50,7 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
                 </table>
                 <h1>highest 5 countries Today</h1>
                 <table class="todayGlobal">
+                    <tr>dsfsf</tr>
                     <tr>
                         <th>Country</th>
                         <th>Cases</th>
