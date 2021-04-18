@@ -2,7 +2,7 @@
 require_once "./partials/header.php";
 include_once "./database/dbConnection.php";
 
-$ChartsGlobalQuery = "SELECT * FROM globalcovid ORDER BY globaldate DESC;";
+$ChartsGlobalQuery = "SELECT * FROM globalcovid ORDER BY globaldate;";
 $SelectGlobalData = mysqli_query($conn, $ChartsGlobalQuery);
 $DateArray = [];
 $CasesArray = [];
@@ -43,9 +43,9 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
                         <th>Recovery</th>
                     </tr>
                     <tr>
-                        <td id="cases">Cases: </td>
+                        <td id="cases" class="left-td">Cases: </td>
                         <td id="deaths">Deaths: </td>
-                        <td id="recovered">Recovered: </td>
+                        <td id="recovered" class="right-td">Recovered: </td>
                     </tr>
                 </table>
                 <h1>highest 5 countries Today</h1>
@@ -57,7 +57,7 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
                     </tr>
                     <?php
                     for ($x = 0; $x <= 4; $x++) {
-                        echo "    <tr><td>" . $CountryName[$x] . "</td> <td>" . $CasesTop[$x] . " </td> <td> " . $DeathsTop[$x] . " </td> </tr>";
+                        echo "    <tr><td class='left-td'>" . $CountryName[$x] . "</td> <td>" . $CasesTop[$x] . " </td> <td class='right-td'> " . $DeathsTop[$x] . " </td> </tr>";
                     } ?>
                 </table>
             </div>
@@ -80,9 +80,9 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
     let deathsArray = <?php echo json_encode($DeathsArray); ?>;
     let RecoveryArray = <?php echo json_encode($RecoveryArray); ?>;
 
-    document.getElementById('cases').innerHTML = `${casesArray[0]}`;
-    document.getElementById('deaths').innerHTML = `${deathsArray[0]}`;
-    document.getElementById('recovered').innerHTML = `${RecoveryArray[0]}`;
+    document.getElementById('cases').innerHTML = `${casesArray.slice(-1)}`;
+    document.getElementById('deaths').innerHTML = `${deathsArray.slice(-1)}`;
+    document.getElementById('recovered').innerHTML = `${RecoveryArray.slice(-1)}`;
 
 
     let myChart = document.getElementById('myChart').getContext('2d');

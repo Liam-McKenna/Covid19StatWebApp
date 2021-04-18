@@ -103,8 +103,7 @@ th {
 .left-td {
   border-radius: 15px 0px 0px 15px;
 }
-.center-td {
-}
+
 .right-td {
   border-radius: 0px 15px 15px 0px;
 }
@@ -289,6 +288,10 @@ button:active {
     background-color: var(--Cdarkgrey);
     margin: 1rem;
     border-radius: 25px;
+  }
+
+  .todayGlobal td {
+    padding: 0rem 0rem 0rem 0rem;
   }
 
   main {
