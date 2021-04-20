@@ -1,7 +1,7 @@
 <?php
 
 
-echo "<div class='country'>" . '<h3>', $countryName, ' - ', $countryCode, '</h3>';
+echo "<div class='country' onClick='loadCountry(`" . $countryCode . "`,`" . $countryName . "` )'>" . '<h3>', $countryName, ' - ', $countryCode, '</h3>';
 $sqlQ2 = "SELECT * FROM covid19Stats WHERE countryID = '$countryCode' ORDER BY reportDate DESC LIMIT 6;";
 $CountryResult = mysqli_query($conn, $sqlQ2);
 $countryCheck = mysqli_num_rows($CountryResult);
