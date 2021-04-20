@@ -29,10 +29,10 @@ Short description of the App
 
 > ### Once the above steps are followed. You will now be able to use the application to read the Covid19 Data.
 
-```javascript
+<!-- ```javascript
 function fancyAlert(arg) {
   if (arg) {
     $.facebox({ div: "#foo" });
   }
 }
-```
+``` -->

@@ -47,7 +47,6 @@ $countryName = $_GET['countryName'];
                     </thead>
                     <tbody>
                         <?PHP
-
                         while ($rowData = $SelectCountryData->fetch_assoc()) {
                             echo '
                 <tr>
@@ -74,6 +73,8 @@ $countryName = $_GET['countryName'];
     let casesArray = <?php echo json_encode($CasesArray); ?>;
     let deathsArray = <?php echo json_encode($DeathsArray); ?>;
     let countryName = "<?php echo $countryName; ?>";
+
+
 
 
     let myChart = document.getElementById('myChart').getContext('2d');

@@ -50,7 +50,7 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
                 </table>
                 <h1>highest 5 countries Today</h1>
                 <table class="todayGlobal">
-                    <tr>dsfsf</tr>
+
                     <tr>
                         <th>Country</th>
                         <th>Cases</th>
@@ -64,7 +64,7 @@ while ($data = $SelectTopGlobal->fetch_assoc()) {
             </div>
 
 
-            <div class="global-chart-container">
+            <div>
                 <h1>Global Graph</h1>
                 <div class="chartContainer-global">
                     <canvas class="chart" id="myChart"></canvas>

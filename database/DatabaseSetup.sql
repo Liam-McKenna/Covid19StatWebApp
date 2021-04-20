@@ -1,6 +1,7 @@
 
 CREATE DATABASE IF NOT EXISTS covidapidata;
 use covidapidata;
+-- use heroku_9c118c3fb745a2a;
 
 
 DROP TABLE IF EXISTS countries ;
