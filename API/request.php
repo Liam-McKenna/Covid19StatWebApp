@@ -30,7 +30,6 @@ if (isset($_POST['btnCountryUpdate'])) {
         $query = "INSERT INTO `countries`(countryName,countryCode) VALUES ('$countryName', '$countryCode');";
         $sqlQ1 = mysqli_query($conn, $query);
     }
-    echo "<p>Countries Update Completed Successfully.</p>";
 }
 
 // this script will queery the database for all the countries entered, then for each country it will make an API call to get the covid19 dat for that country. Then for each row of data for that country it will post it to the database, repeats for each country. If there is a country without any timeline data, it will delete the country from the database.
@@ -62,7 +61,7 @@ if (isset($_POST['btnDataUpdate'])) {
         // echo "<p>" . $countryName . ' - ' . $countryCode . "</p>";
 
     }
-    echo "<p>Countries Updated.</p>";
+
 
     //GLOBAL DATA
     $curl = curl_init();

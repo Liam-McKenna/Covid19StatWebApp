@@ -27,12 +27,12 @@ include_once "./components/navbar.php";
 </body>
 
 <Script>
-    let updateCountries = document.getElementById("updateCountries");
+    // let updateCountries = document.getElementById("updateCountries");
     let updateData = document.getElementById("updateData");
 
-    updateCountries.addEventListener('click', function() {
-        document.getElementById("outputWindow").innerHTML = "<p>loading, Do Not Close. <br>  Please wait...</p>";
-    })
+    // updateCountries.addEventListener('click', function() {
+    //     document.getElementById("outputWindow").innerHTML = "<p>loading, Do Not Close. <br>  Please wait...</p>";
+    // })
     updateData.addEventListener('click', function() {
         document.getElementById("outputWindow").innerHTML = "<p>loading, Do Not Close. <br> Please wait...</p>";
     })
