@@ -1,7 +1,6 @@
 	
 <?php
 // database configuration, separated for security
-
 if ($_SERVER['REMOTE_ADDR'] == '::1') {
     $hn = 'localhost:3308';
     $db = 'covidapidata';

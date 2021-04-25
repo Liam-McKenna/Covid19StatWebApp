@@ -28,7 +28,7 @@ CREATE TABLE users(
     name varchar(128) NOT NULL,
     username varchar(128) NOT NULL,
     email varchar(128) NOT NULL,
-    password varchar(128) NOT NULL
+    password varchar(128) NOT NULL,
     PRIMARY KEY (usersId)
 );
 
@@ -39,24 +39,19 @@ CREATE TABLE globalCovid(
     cases INT,
     deaths INT,
     recovered INT
-)
-
-
-
-
-
+);
 
 
 
 -- get data storage size of the database.
-SELECT table_schema AS "Database",
-ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
-FROM information_schema.TABLES
-GROUP BY table_schema;
+-- SELECT table_schema AS "Database",
+-- ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS "Size (MB)"
+-- FROM information_schema.TABLES
+-- GROUP BY table_schema;
 
 
-SELECT countries.countryName, covid19stats.reportDate, covid19stats.cases, covid19stats.deaths FROM covid19stats
-INNER JOIN countries ON covid19stats.countryID=countries.countryCode WHERE reportDate = (SELECT MAX(reportDate) FROM covid19stats) ORDER BY cases desc limit 10;
+-- SELECT countries.countryName, covid19stats.reportDate, covid19stats.cases, covid19stats.deaths FROM covid19stats
+-- INNER JOIN countries ON covid19stats.countryID=countries.countryCode WHERE reportDate = (SELECT MAX(reportDate) FROM covid19stats) ORDER BY cases desc limit 10;
 
 
 

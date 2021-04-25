@@ -1,0 +1,16 @@
+[
+  {
+    "usersId": 1,
+    "name": "Liam",
+    "username": "LMK",
+    "email": "Liam@gmail.com",
+    "password": "$2y$10$2WiPzw7Qbmum58VCaDvZneJY2Emw2WbvpampnI/BMV5y1CQE2xczK"
+  },
+  {
+    "usersId": 2,
+    "name": "test1",
+    "username": "rabbit",
+    "email": "test@gmail.com",
+    "password": "$2y$10$oa0ScglW5rHdG8o/pXQdlOQomX0kXUzNdoe1BV5tJmBpAWEHwKNdC"
+  }
+]
