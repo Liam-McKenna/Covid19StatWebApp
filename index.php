@@ -8,10 +8,8 @@ if (!$_GET['page']) {
 ?>
 
 <body>
-
     <?php include_once "./components/navbar.php"; ?>
     <main>
-
         <?php
         if (isset($_SESSION['userid'])) {
             echo "<h2> Hello " . $_SESSION['username'] . "!</h2>";
@@ -21,6 +19,4 @@ if (!$_GET['page']) {
         <?php include_once "./components/searchbar.php";
         ?>
     </main>
-
-
 </body>

@@ -7,7 +7,6 @@ if (isset($_POST['currentPage'])) {
 }
 //checks if there is a search. needed to stop null value breaking the page when first loaded.
 if (!empty($searchEntry = $_POST['searchEntry'])) {
-    //echo $searchEntry = $_POST['searchEntry'];
 
     $paginator = 0;
     $resultsPerPage = 6;

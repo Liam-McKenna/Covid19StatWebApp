@@ -17,13 +17,12 @@
                     "searchEntry": e.target.value
                 },
                 success: function(response) {
-                    //console.log(response);
                     document.getElementById("outputsearch").innerHTML = `<p>${response}<p>`;
                 }
             });
         });
 
-        //default load the php country data without anything entered.
+        //default load the php country data when searchbar is empty.
         $.ajax({
             url: './components/sbComponent.php',
             type: 'post',
@@ -32,12 +31,11 @@
                 "currentPage": <?PHP echo $_GET['page']; ?>
             },
             success: function(responseDefault) {
-                //console.log(responseDefault);
                 document.getElementById("outputsearch").innerHTML = `<p>${responseDefault}<p>`;
             }
         });
 
-        // ajax complete will wait until the Ajax php is in the dom before running this script, since the page id will not exist until after the ajax call is complete.
+        // ajax complete will wait until the Ajax php is in the dom before running this script, since the page ID will not exist until after the ajax call is complete.
         $(document).ajaxComplete(function(event, request, settings) {
             let pageNumber = <?php echo $_GET['page'] ?>;
             if (pageNumber && document.getElementById("page" + pageNumber)) {
