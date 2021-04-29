@@ -1,13 +1,8 @@
 <?php
 include_once "./database/dbConnection.php";
+set_time_limit(500); // php timeout is required to be extended due to the huge amount of data being parsed via the via request (over 80,000 rows of data)
 
 // this script will call the API for a list of all the countries that are available with data, it then adds the country identifier to the database.
-
-
-
-
-
-
 // if the button is clicked:
 if (isset($_POST['btnCountryUpdate'])) {
     // ALL COUNTRIES NAME & ID UPDATE

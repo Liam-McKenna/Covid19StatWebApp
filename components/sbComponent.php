@@ -42,8 +42,6 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
 <?PHP
     // IF THERE IS NOTHING ENTERED IN SEARCH BAR.
 } else {
-    //echo "nothing entered";
-
     $paginator = 0;
     $resultsPerPage = 6;
 ?>
@@ -73,6 +71,8 @@ if (!empty($searchEntry = $_POST['searchEntry'])) {
                 $countryCode = $countryData['countryCode'];
                 include "./countries.php";
             }
+        } else {
+            echo "<h3> There is currently no data available. Please signup/login & download the covid19 data from the Admin settings page or upload the CSV files in the 'database->testData' folder to the database.</h3>";
         }
         ?>
     </div>
