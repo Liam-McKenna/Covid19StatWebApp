@@ -25,6 +25,11 @@ if (isset($_POST["submit"])) {
         header("location: ../signup.php?error=passwordDontMatch");
         exit();
     }
+    if (pwdValid($password) !== false) {
+        header("location: ../signup.php?error=invalidPassword");
+        echo "password invalid";
+        exit();
+    }
     if (usernameExists($conn, $username, $email) !== false) {
         header("location: ../signup.php?error=usernameOrEmailTaken");
         exit();

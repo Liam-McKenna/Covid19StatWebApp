@@ -36,6 +36,17 @@ function pwdMatch($password, $repeatPassword)
     return $result;
 }
 
+function pwdValid($password)
+{
+    if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/", $password)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+
+
 function usernameExists($conn, $username, $email)
 {
     $sql = "SELECT * FROM users WHERE username = ? OR email = ?;";

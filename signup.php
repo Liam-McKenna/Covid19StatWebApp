@@ -15,6 +15,7 @@
                 <div class="pwtoggleContainer">
                     <input id="password" type="password" name="pwd" placeholder="Password...">
                     <img id="togglePW" class="togglePassword" src="./img/eye-open.svg"></img>
+                    <p>Eight characters, one or more upper case, lower case, number and special character</p>
                 </div>
                 <div class="pwtoggleContainer">
                     <input id="confrimPw" type="password" name="repeatPwd" placeholder="Confirm password...">
@@ -43,6 +44,8 @@ if (isset($_GET['error'])) {
         echo "<p>Something strange happened. there was an error but please try again.</p>";
     } else if ($_GET['error'] == "usernameOrEmailTaken") {
         echo "<p>The Username Or Email is already taken.</p>";
+    } else if ($_GET['error'] == "invalidPassword") {
+        echo "<p>Weak password: Minimum eight characters, one or more upper case, one lower case, one number and one special character.</p>";
     } else if ($_GET['error'] == "none") {
         echo "<p>Sign up completed! Congratulations!</p>";
     }

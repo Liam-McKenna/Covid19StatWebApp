@@ -16,6 +16,7 @@ Short description of the App
 - Open Datagrip or your prefered DBMS application and create a connection to the XAMPP MySql server.
 - Open the query file database->DatabaseSetup.sql.
 - Run the entire script to create the Schema and related tables.
+- NOTE: You might need to alter the 'dbconfig.php' file to point to your correct ip:port of you db.
 
 ## - Access Application
 
@@ -28,11 +29,3 @@ Short description of the App
 - A notification will tell you when the update is complete.
 
 > ### Once the above steps are followed. You will now be able to use the application to read the Covid19 Data.
-
-<!-- ```javascript
-function fancyAlert(arg) {
-  if (arg) {
-    $.facebox({ div: "#foo" });
-  }
-}
-``` -->

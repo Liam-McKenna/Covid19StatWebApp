@@ -74,9 +74,6 @@ $countryName = $_GET['countryName'];
     let deathsArray = <?php echo json_encode($DeathsArray); ?>;
     let countryName = "<?php echo $countryName; ?>";
 
-
-
-
     let myChart = document.getElementById('myChart').getContext('2d');
     let dataChart = new Chart(myChart, {
         type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
